@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
-public class Eye : MonoBehaviour {
+public class Eye : Enemy {
 
     public float ACCELERATION = 1;
     public Rigidbody rb;
     private Direction currentDirection;
+
+    public Transform goal;
 
     enum Direction
     {
@@ -46,6 +48,8 @@ public class Eye : MonoBehaviour {
     void Start ()
     {
         rb = GetComponent<Rigidbody>();
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent.destination = goal.position;
 
         currentDirection = Direction.FORWARD;
     }
@@ -55,6 +59,9 @@ public class Eye : MonoBehaviour {
 	
 	}
 
+    /*
+     * 
+     * 
     void FixedUpdate()
     {
         List<Direction> a = availableDirections();
@@ -71,6 +78,7 @@ public class Eye : MonoBehaviour {
 
         rb.AddForce(getVector(currentDirection));
     }
+     */
 
     List<Direction> availableDirections()
     {
