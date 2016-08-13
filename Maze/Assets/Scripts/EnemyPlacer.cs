@@ -23,7 +23,7 @@ public class EnemyPlacer : MonoBehaviour {
     }
 
     void placeEnemy(Enemy enemy){
-        Enemy newEnemy = Instantiate(enemy.prefab) as Enemy; //TODO  this is wrong
+        Enemy newEnemy = Instantiate(enemy.prefab) as Enemy; //TODO  this is wrong - why is this wrong?
         newEnemy.name = enemy.type + " " + enemy.id;
         newEnemy.transform.parent = transform;
         newEnemy.transform.localPosition = newEnemy.startLocation;
