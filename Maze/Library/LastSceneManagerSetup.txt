@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/MazseTest.unity
+- path: Assets/Scenes/JamesScene.unity
   isLoaded: 1
   isActive: 1
