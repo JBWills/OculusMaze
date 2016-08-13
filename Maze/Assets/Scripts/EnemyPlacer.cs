@@ -5,6 +5,7 @@ public class EnemyPlacer : MonoBehaviour {
 
     //places enemies of any type at a location in the world maze 
     public Eye eyePrefab;
+	public Transform groundReference;
     // Inititalization
     void Start () {
 	
@@ -35,6 +36,7 @@ public class EnemyPlacer : MonoBehaviour {
     {
         Eye testEye = Instantiate(eyePrefab) as Eye;
         testEye.startLocation = new Vector3(10f, 1.0f, 10f);
+		testEye.groundReference = groundReference;
         testEye.type = EnemyType.EYE;
         testEye.id = 0;
         placeEnemy(testEye);

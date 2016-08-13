@@ -9,7 +9,11 @@ public class Eye : Enemy {
     public Rigidbody rb;
     private Direction currentDirection;
 
-    public Transform goal;
+	public Transform groundReference;
+
+	private  const int X_SCALE = 25;
+	private const int Z_SCALE = 25;
+	public int EYE_HEIGHT = 5;
 
     enum Direction
     {
@@ -49,7 +53,8 @@ public class Eye : Enemy {
     {
         rb = GetComponent<Rigidbody>();
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        agent.destination = goal.position;
+		Vector3 goalPos = createRandomStartingGoal();
+		agent.destination = goalPos;
 
         currentDirection = Direction.FORWARD;
     }
@@ -100,4 +105,14 @@ public class Eye : Enemy {
     {
         return Enum.GetValues(typeof(Direction)).Cast<Direction>().ToList<Direction>();
     }
+
+
+	Vector3 createRandomStartingGoal() {
+		Debug.Log("HELLOOO");
+		var xRand = groundReference.localPosition.x + (int)(UnityEngine.Random.value * (X_SCALE / 2));
+		var yPos = groundReference.localPosition.y + EYE_HEIGHT; 
+		var zRand = groundReference.localPosition.z + (int)(UnityEngine.Random.value * (Z_SCALE / 2));
+		Vector3 goalPos = new Vector3(xRand,yPos,zRand);
+		return goalPos;
+	}
 }

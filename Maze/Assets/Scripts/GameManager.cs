@@ -5,9 +5,12 @@ public class GameManager : MonoBehaviour {
 
     public MazeGenerator mazeGeneratorPrefab;
     private MazeGenerator mazeGenerator;
+	public Transform Ground;
+
 
     public EnemyPlacer enemyplacePrefab;
     private EnemyPlacer enemyPlacer;
+
     // Use this for initialization
     void Start () {
         BeginGame();
@@ -28,6 +31,7 @@ public class GameManager : MonoBehaviour {
         mazeGenerator.instantiateMaze(20, 20, 3.0f);
 
         enemyPlacer = Instantiate(enemyplacePrefab) as EnemyPlacer;
+		enemyPlacer.groundReference = Ground;
         enemyPlacer.makeSomeTestEyes();
 
 
