@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/JamesScene.unity
+- path: Assets/Scenes/scene-eye-test.unity
   isLoaded: 1
   isActive: 1
