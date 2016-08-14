@@ -16,20 +16,13 @@ public class EnemyPlacer : MonoBehaviour {
 	
 	}
 
-
-    void placeEnemies(Enemy[,] enemiesToPlace){
-        foreach (Enemy enemy in enemiesToPlace){
-            placeEnemy(enemy);
-        }
-    }
-
-    void placeEnemy(Enemy enemy){
-        Enemy newEnemy = Instantiate(enemy.prefab) as Enemy; //TODO  this is wrong - why is this wrong?
-        newEnemy.name = enemy.type + " " + enemy.id;
-        newEnemy.transform.parent = transform;
-        newEnemy.transform.localPosition = newEnemy.startLocation;
+    void placeEye(Eye eye){
+		//Eye newEye = Instantiate(eye.prefab) as Eye; //TODO  this is wrong - why is this wrong?
+		eye.name = eye.type + " " + eye.	id;
+		eye.transform.parent = transform;
+		eye.transform.localPosition = eye.startLocation;
         
-            //handle rotation and scale if needed
+		//handle rotation and scale if needed
     }
 
     public void makeSomeTestEyes()
@@ -39,7 +32,14 @@ public class EnemyPlacer : MonoBehaviour {
 		testEye.groundReference = groundReference;
         testEye.type = EnemyType.EYE;
         testEye.id = 0;
-        placeEnemy(testEye);
+        placeEye(testEye);
+		Debug.Log("making eyes ");
+		Eye testEye2 = Instantiate(eyePrefab) as Eye;
+		testEye2.startLocation = new Vector3(20f, 1.0f, 10f);
+		testEye2.groundReference = groundReference;
+		testEye2.type = EnemyType.EYE;
+		testEye2.id = 1;
+		placeEye(testEye2);
     }
 
 
